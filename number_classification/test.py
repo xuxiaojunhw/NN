@@ -54,7 +54,7 @@ class Model(torch.nn.Module):
         return output
 
 
-model = Model()
+model = Model().cuda()
 
 criterion = torch.nn.CrossEntropyLoss()
 
@@ -65,9 +65,13 @@ amp = True
 
 
 def strat_training():
+    amp = True
+
     losses = []
     epochs = 10
+
     print('Start training...')
+
     running_loss = 0.0
     for epoch in range(epochs):
         for i, data in enumerate(train_loader):
@@ -94,12 +98,14 @@ def strat_training():
         print(f'Epoch: {epoch + 1} Loss: {loss.item()}')
 
     print('Training Finished.')
+    print('Training Finished.')
     f, ax = plt.subplots()
     sns.lineplot(x=np.linspace(0, 0 + epochs - 1, epochs), y=losses).set_title('Training Loss');
     plt.show()
 
 
 def start_test():
+    print("start test")
     for img, label in test_loader:
         pred = model(img.cuda())
         label = torch.argmax(pred, axis=1)
