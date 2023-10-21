@@ -3,7 +3,8 @@
 # @Time    : 2023/10/21 11:33
 # @Author  : xu_xiao_jun
 # @File    : 6_logistic_regression.py
-# @Description :
+# @Description : logistic regression 虽然叫回归，其实是一个分类问题，
+# 如果输出的数值为实数空间的那就叫做回归问题，如果结果是一个离散的集合，就叫做分类问题了。
 
 
 import torch
